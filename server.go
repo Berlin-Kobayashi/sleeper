@@ -14,7 +14,7 @@ type Service struct {
 
 func (s Service) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 	rand.Seed(time.Now().UnixNano())
-	ms := rand.Intn(s.Max - 1)
+	ms := rand.Intn(s.Max) + 1
 	time.Sleep(time.Duration(ms) * time.Millisecond)
 	rw.Write([]byte(strconv.Itoa(ms)))
 }
